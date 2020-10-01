@@ -1,6 +1,9 @@
 if status --is-interactive
 	# Adjust PATH
-	set PATH $HOME/.bin $HOME/.local/bin /snap/bin $PATH
+	set PATH $HOME/.bin $HOME/.local/bin /snap/bin /opt/jibcmd/bin /opt/Android/Sdk/platform-tools /opt/kubectx $PATH
+
+	# Set default editor
+	set EDITOR vim
 
 	# No welcome message
 	set fish_greeting
@@ -72,6 +75,11 @@ if status --is-interactive
 	end
 
 	alias ctop="docker run --rm -ti -v /var/run/docker.sock:/var/run/docker.sock quay.io/vektorlab/ctop:latest"
+	alias k9s="docker run --rm -it -v $HOME/.kube/config:/root/.kube/config quay.io/derailed/k9s"
 	alias bettercap='docker run -it --privileged --net=host -v $PWD/bettercap:/root bettercap/bettercap'
+	alias k='kubectl'
+
 end
+
+eval (direnv hook fish)
 
