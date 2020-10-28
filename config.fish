@@ -78,7 +78,10 @@ if status --is-interactive
 	alias k9s="docker run --rm -it -v $HOME/.kube/config:/root/.kube/config quay.io/derailed/k9s"
 	alias bettercap='docker run -it --privileged --net=host -v $PWD/bettercap:/root bettercap/bettercap'
 	alias k='kubectl'
+end
 
+if test -n "$TERMINOLOGY"
+	tybg (ls ~/.config/terminology/background/ | shuf -n 1 | xargs -I '{}' echo "~/.config/terminology/background/{}")
 end
 
 eval (direnv hook fish)
